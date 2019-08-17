@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() {
     group("$DartAnimationController", () {
         group("constructor", () {
-            final controller = DartAnimationController(duration: const Duration(seconds: 1));
+            final controller = DartAnimationController(const Duration(seconds: 1));
 
             test("initValues", () {
                 expect(controller.initValues, const DoubleLerp(0.0, 1.0));
@@ -16,27 +16,27 @@ void main() {
             });
 
             test("initialValue below start", () {
-                expect(() => DartAnimationController(duration: const Duration(seconds: 1), initialValue: -1.0),
+                expect(() => DartAnimationController(const Duration(seconds: 1), initialValue: -1.0),
                     throwsA(const TypeMatcher<AssertionError>()));
             });
 
             test("initialValue below end", () {
-                expect(() => DartAnimationController(duration: const Duration(seconds: 1), initialValue: 2.0),
+                expect(() => DartAnimationController(const Duration(seconds: 1), initialValue: 2.0),
                     throwsA(const TypeMatcher<AssertionError>()));
             });
 
             test("duration not null", () {
-                expect(() => DartAnimationController(duration: null),
+                expect(() => DartAnimationController(null),
                     throwsA(const TypeMatcher<AssertionError>()));
             });
 
             test("startValue not null", () {
-                expect(() => DartAnimationController(duration: const Duration(seconds: 1), startValue: null),
+                expect(() => DartAnimationController(const Duration(seconds: 1), startValue: null),
                     throwsA(const TypeMatcher<AssertionError>()));
             });
 
             test("targetValue not null", () {
-                expect(() => DartAnimationController(duration: const Duration(seconds: 1), targetValue: null),
+                expect(() => DartAnimationController(const Duration(seconds: 1), targetValue: null),
                     throwsA(const TypeMatcher<AssertionError>()));
             });
         });
@@ -44,7 +44,7 @@ void main() {
         group("init()", () {
             group("init while pingPong going backwards", () {
                 final controller = DartAnimationController(
-                    duration: const Duration(seconds: 1),
+                    const Duration(seconds: 1),
                     startValue: 0.5,
                     targetValue: 1.0,
                     initialValue: 1.0,
@@ -75,25 +75,25 @@ void main() {
 
             group("before init()", () {
                 test("currentValue", () {
-                    final controller = DartAnimationController(duration: const Duration(seconds: 1));
+                    final controller = DartAnimationController(const Duration(seconds: 1));
                     controller.currentValue = 0.4;
                     expect(controller.currentValue, 0.4);
                 });
                 test("isDone", () {
-                    final controller = DartAnimationController(duration: const Duration(seconds: 1));
+                    final controller = DartAnimationController(const Duration(seconds: 1));
                     expect(controller.isDone, true);
                 });
             });
 
             group("after init()", () {
                 test("currentValue", () {
-                    final controller = DartAnimationController(duration: const Duration(seconds: 1));
+                    final controller = DartAnimationController(const Duration(seconds: 1));
                     controller.currentValue = 0.4;
                     controller.init();
                     expect(controller.currentValue, 0.0);
                 });
                 test("isDone", () {
-                    final controller = DartAnimationController(duration: const Duration(seconds: 1));
+                    final controller = DartAnimationController(const Duration(seconds: 1));
                     controller.init();
                     expect(controller.isDone, false);
                 });
@@ -103,7 +103,7 @@ void main() {
         group("update()", () {
             group("${DeltaLoopMode.dontRepeat}", () {
                 final controller = DartAnimationController(
-                    duration: const Duration(seconds: 1),
+                    const Duration(seconds: 1),
                     loopMode: DeltaLoopMode.dontRepeat,
                 )
                     ..init();
@@ -135,7 +135,7 @@ void main() {
             });
             group("${DeltaLoopMode.restart}", () {
                 final controller = DartAnimationController(
-                    duration: const Duration(seconds: 1),
+                    const Duration(seconds: 1),
                     loopMode: DeltaLoopMode.restart,
                 )
                     ..init();
@@ -179,7 +179,7 @@ void main() {
 
             group("${DeltaLoopMode.pingPong}", () {
                 final controller = DartAnimationController(
-                    duration: const Duration(seconds: 1),
+                    const Duration(seconds: 1),
                     startValue: 0.6,
                     targetValue: 1.6,
                     loopMode: DeltaLoopMode.pingPong,
@@ -229,7 +229,7 @@ void main() {
 
             group("${DeltaLoopMode.pingPong} with initialValue", () {
                 final controller = DartAnimationController(
-                    duration: const Duration(seconds: 1),
+                    const Duration(seconds: 1),
                     initialValue: 1.0,
                     loopMode: DeltaLoopMode.pingPong,
                 );

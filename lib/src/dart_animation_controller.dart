@@ -1,5 +1,4 @@
 import 'package:abstract_dart/abstract_dart.dart';
-import 'package:meta/meta.dart';
 
 /// Custom animation controller with loop modes that doesn't need
 /// to be disposed of and doesn't depend on flutter.
@@ -15,8 +14,7 @@ class DartAnimationController {
   bool _stopped = true;
   double initialValue;
 
-  DartAnimationController({
-    @required Duration duration,
+  DartAnimationController(Duration duration, {
     double startValue = 0.0,
     double targetValue = 1.0,
     double initialValue,
