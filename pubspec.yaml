@@ -1,17 +1,20 @@
 name: dart_animation_controller
-description: Flutter independent AnimationController
+description: A platform independent AnimationController with different modes.
 version: 1.0.0
+homepage: https://www.github.com/modulovalue/dart_animation_controller
 author: Modestas Valauskas <valauskasmodestas+dartpub@gmail.com>
-homepage: https://github.com/modulovalue/dart_animation_controller
-repository: https://github.com/modulovalue/dart_animation_controller
 issue_tracker: https://github.com/modulovalue/dart_animation_controller/issues
 
 environment:
-  sdk: '>2.2.2 <3.0.0'
+  sdk: '>=2.4.4 <3.0.0'
 
 dependencies:
-  abstract_dart: ^0.0.3
+  abstract_dart: ^1.0.0
+  abstract_lerp: ^1.0.0
+  meta: ^1.1.8
 
 dev_dependencies:
-  test: any
-  extra_pedantic: ^1.0.0
+  extra_pedantic: ^1.1.1
+  test: ^1.5.0
+  mockito: ^4.0.0
+  test_coverage: ^0.2.0

@@ -1,4 +1,4 @@
-import 'package:abstract_dart/abstract_dart.dart';
+import 'package:abstract_lerp/abstract_lerp.dart';
 
 /// Custom animation controller with loop modes that doesn't need
 /// to be disposed of and doesn't depend on flutter.
@@ -14,7 +14,8 @@ class DartAnimationController {
   bool _stopped = true;
   double initialValue;
 
-  DartAnimationController(Duration duration, {
+  DartAnimationController(
+    Duration duration, {
     double startValue = 0.0,
     double targetValue = 1.0,
     double initialValue,
@@ -23,7 +24,8 @@ class DartAnimationController {
         assert(startValue != null),
         assert(targetValue != null),
         assert(startValue <= targetValue),
-        assert(initialValue == null || (initialValue <= targetValue && initialValue >= startValue)),
+        assert(initialValue == null ||
+            (initialValue <= targetValue && initialValue >= startValue)),
         currentValue = initialValue ?? startValue,
         this.initialValue = initialValue ?? startValue,
         this._duration = duration,
@@ -35,10 +37,13 @@ class DartAnimationController {
   void init() {
     currentBounds = initValues;
     currentValue = initialValue;
-    _currentTime = Duration(milliseconds: (currentBounds.reLerp(initialValue) * 1000.0 * 2).toInt());
+    _currentTime = Duration(
+        milliseconds:
+            (currentBounds.reLerp(initialValue) * 1000.0 * 2).toInt());
     _stopped = false;
   }
 
+  /// A delta of 1.0 means a second has passed.
   void update(double delta) {
     if (!_stopped) {
       _currentTime += Duration(milliseconds: (delta * 1000.0).toInt());
@@ -65,14 +70,14 @@ class DartAnimationController {
   bool get isDone => _stopped;
 }
 
-/// Various looping modes for [DartAnimationController].
+/// Looping modes for [DartAnimationController].
 enum DeltaLoopMode {
-  /// When an animation starts and ends it will end and not repeat again.
+  /// When an animation ends it will end and not repeat again.
   dontRepeat,
 
   /// When an animation ends it restarts again in reverse.
   ///
-  /// The duration of an animation is only for one direction.
+  /// The duration of an animation is only affecting one direction.
   pingPong,
 
   /// When an animation ends it restarts again from the beginning.
